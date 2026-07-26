@@ -44,19 +44,19 @@
 
     .profile {
       display: grid;
-      grid-template-columns: 220px minmax(0, 1fr);
-      gap: 54px;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 48px;
       align-items: center;
-      padding: 70px 0 78px;
+      padding: 64px 0 68px;
       border-bottom: 1px solid var(--line);
     }
     .profile-photo {
-      width: 220px;
-      aspect-ratio: 1 / 1;
+      width: 200px;
+      height: 200px;
       display: block;
       object-fit: cover;
-      object-position: 50% 24%;
-      border-radius: 22px;
+      object-position: 50% 20%;
+      border-radius: 20px;
       box-shadow: 0 10px 32px rgba(16,27,53,.1);
     }
     .profile h1 {
@@ -259,7 +259,7 @@
       body { font-size: 16px; }
       .page, .nav-inner { width: min(calc(100% - 32px), var(--max)); }
       .profile { grid-template-columns: 116px 1fr; gap: 22px; padding: 40px 0 42px; align-items: start; }
-      .profile-photo { width: 116px; border-radius: 15px; }
+      .profile-photo { width: 116px; height: 116px; border-radius: 15px; }
       .profile h1 { font-size: clamp(2.25rem, 11vw, 3.5rem); }
       .role { margin: 10px 0 16px; font-size: .98rem; }
       .affiliation { display: block; margin-top: 4px; font-size: .82rem; }
@@ -274,7 +274,7 @@
 
     @media (max-width: 430px) {
       .profile { grid-template-columns: 92px 1fr; gap: 16px; }
-      .profile-photo { width: 92px; border-radius: 12px; }
+      .profile-photo { width: 92px; height: 92px; border-radius: 12px; }
       .profile h1 { font-size: 2.15rem; }
       .profile-links li { flex: 1 0 38%; }
     }
