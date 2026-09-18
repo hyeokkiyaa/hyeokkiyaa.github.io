@@ -3,23 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hyeokmin Kwon — Computer Science researcher and software engineer working on intelligent software engineering, AI agents, and reliable systems.">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Hyeokmin Kwon — undergraduate researcher working on AI interaction (HCI) and software engineering.">
+  <meta name="theme-color" content="#0D1026">
   <meta property="og:title" content="Hyeokmin Kwon">
-  <meta property="og:description" content="Computer Science researcher and software engineer.">
+  <meta property="og:description" content="Undergraduate researcher working on AI interaction (HCI) and software engineering.">
   <meta property="og:type" content="website">
-  <title>Hyeokmin Kwon</title>
+  <title>Hyeokmin Kwon — HCI &amp; AI Interaction Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,560;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #101b35;
-      --blue: #315efb;
-      --blue-soft: #edf2ff;
-      --text: #283650;
-      --muted: #68748a;
-      --line: #e8ecf3;
+      --ink: #11142b;
+      --text: #262b45;
+      --muted: #6b7086;
       --paper: #ffffff;
+      --paper-soft: #f5f6fb;
+      --line: #e3e5f0;
+      --accent: #4338ca;
+      --accent-soft: #eef0fd;
+      --award: #b45309;
+      --award-soft: #fff4e5;
+
+      --hero-bg-1: #171b3e;
+      --hero-bg-2: #0b0d22;
+      --hero-text: #f5f6ff;
+      --hero-muted: #a9aedc;
+      --hero-line: rgba(245, 246, 255, 0.14);
+      --hero-surface: rgba(255, 255, 255, 0.06);
+
       --max: 1080px;
-      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+      --sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -30,79 +45,196 @@
       background: var(--paper);
       font-family: var(--sans);
       font-size: 17px;
-      line-height: 1.75;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--blue); text-underline-offset: 3px; }
-    a:hover { color: #183fc7; }
-    ::selection { background: #dce5ff; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: #322aa8; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    ::selection { background: #d9dcfb; }
+    img { max-width: 100%; }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 16px;
+      color: var(--hero-text);
+      background: var(--ink);
+      border-radius: 8px;
+      font-size: .85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: top .15s ease;
+    }
+    .skip-link:focus { top: 12px; }
 
     .page {
       width: min(calc(100% - 48px), var(--max));
       margin: 0 auto;
     }
 
-    .profile {
-      display: grid;
-      grid-template-columns: 200px minmax(0, 1fr);
-      gap: 48px;
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: min(92vh, 820px);
+      display: flex;
       align-items: center;
-      padding: 64px 0 68px;
-      border-bottom: 1px solid var(--line);
+      color: var(--hero-text);
+      background:
+        radial-gradient(120% 140% at 18% -10%, var(--hero-bg-1), var(--hero-bg-2) 62%);
     }
-    .profile-photo {
-      width: 200px;
-      height: 200px;
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--hero-line) 1px, transparent 1px);
+      background-size: 34px 34px;
+      -webkit-mask-image: radial-gradient(65% 65% at 50% 38%, #000, transparent 85%);
+              mask-image: radial-gradient(65% 65% at 50% 38%, #000, transparent 85%);
+      opacity: .6;
+    }
+    .layer-field {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .layer {
+      position: absolute;
       display: block;
+      will-change: transform;
+    }
+    .layer i {
+      display: block;
+      border-radius: 50%;
+      filter: blur(1px);
+      animation: drift 10s ease-in-out infinite;
+    }
+    .layer--a { top: 10%;  left: 6%; }
+    .layer--a i { width: 230px; height: 230px; background: radial-gradient(circle at 30% 30%, rgba(129,140,255,.5), rgba(129,140,255,0) 70%); animation-duration: 12s; }
+    .layer--b { top: 54%;  left: 74%; }
+    .layer--b i { width: 280px; height: 280px; background: radial-gradient(circle at 40% 40%, rgba(94,234,212,.3), rgba(94,234,212,0) 70%); animation-duration: 14s; animation-delay: -4s; }
+    .layer--c { top: 72%;  left: 14%; }
+    .layer--c i { width: 170px; height: 170px; background: radial-gradient(circle at 50% 50%, rgba(245,158,11,.25), rgba(245,158,11,0) 70%); animation-duration: 11s; animation-delay: -6s; }
+    .layer--d { top: 4%;   left: 66%; }
+    .layer--d i { width: 130px; height: 130px; background: radial-gradient(circle at 50% 50%, rgba(129,140,255,.4), rgba(129,140,255,0) 70%); animation-duration: 9s; animation-delay: -2s; }
+    .layer--e { top: 36%;  left: 42%; }
+    .layer--e i { width: 90px; height: 90px; background: radial-gradient(circle at 50% 50%, rgba(94,234,212,.28), rgba(94,234,212,0) 70%); animation-duration: 8s; animation-delay: -1s; }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 44px;
+      align-items: center;
+      padding: 96px 0;
+    }
+    .portrait-wrap { will-change: transform; }
+    .portrait-float {
+      position: relative;
+      width: 176px;
+      height: 176px;
+      padding: 5px;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, rgba(129,140,255,.9), rgba(94,234,212,.65), rgba(129,140,255,.9));
+      animation: drift 11s ease-in-out infinite;
+      animation-delay: -3s;
+    }
+    .portrait-float img {
+      display: block;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: 50% 20%;
-      border-radius: 20px;
-      box-shadow: 0 10px 32px rgba(16,27,53,.1);
+      border-radius: 50%;
+      background: #1b2044;
     }
-    .profile h1 {
-      margin: 0;
-      color: var(--navy);
-      font-size: clamp(3rem, 6vw, 5.2rem);
-      line-height: 1;
-      letter-spacing: -.055em;
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-family: var(--serif);
+      font-weight: 560;
+      font-size: clamp(2.7rem, 6.4vw, 5rem);
+      line-height: .98;
+      letter-spacing: -.02em;
     }
-    .role {
-      margin: 18px 0 26px;
-      color: var(--navy);
-      font-size: clamp(1.1rem, 2.4vw, 1.5rem);
-      font-weight: 700;
-      line-height: 1.4;
+    .hero .role {
+      margin: 0 0 20px;
+      max-width: 46ch;
+      color: var(--hero-muted);
+      font-size: clamp(1.02rem, 1.9vw, 1.28rem);
+      font-weight: 500;
+      line-height: 1.55;
     }
-    .affiliation { color: var(--muted); font-weight: 500; }
-    .profile-links {
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      max-width: min(580px, 100%);
+      margin: 0 0 26px;
+      padding: 9px 18px 9px 13px;
+      color: var(--hero-text);
+      background: var(--hero-surface);
+      border: 1px solid var(--hero-line);
+      border-radius: 999px;
+      font-size: .92rem;
+      line-height: 1.5;
+    }
+    .status-dot {
+      flex: 0 0 auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5eead4;
+      animation: pulse 2.4s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(94,234,212,.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(94,234,212,0); }
+      100% { box-shadow: 0 0 0 0 rgba(94,234,212,0); }
+    }
+    .hero .profile-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 28px;
+      gap: 12px 26px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
-    .profile-links a {
+    .hero .profile-links a {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      color: var(--navy);
-      font-size: .97rem;
+      color: var(--hero-text);
+      font-size: .95rem;
       text-decoration: none;
     }
-    .profile-links a:hover { color: var(--blue); }
-    .link-icon {
-      width: 28px;
-      height: 28px;
+    .hero .profile-links a:hover { color: #cfd3ff; }
+    .hero .link-icon {
+      width: 27px;
+      height: 27px;
       display: inline-grid;
       place-items: center;
-      color: var(--blue);
-      background: var(--blue-soft);
+      color: #dfe1ff;
+      background: var(--hero-surface);
+      border: 1px solid var(--hero-line);
       border-radius: 8px;
-      font-size: .75rem;
+      font-size: .72rem;
       font-weight: 800;
     }
 
+    /* ---------- Nav ---------- */
     nav {
       position: sticky;
       z-index: 10;
@@ -113,32 +245,36 @@
     }
     .nav-inner {
       width: min(calc(100% - 48px), var(--max));
-      min-height: 58px;
+      min-height: 56px;
       margin: auto;
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 26px;
       overflow-x: auto;
       scrollbar-width: none;
     }
     .nav-inner::-webkit-scrollbar { display: none; }
     .nav-inner a {
+      padding: 4px 1px;
       color: var(--muted);
-      font-size: .82rem;
-      font-weight: 750;
-      letter-spacing: .04em;
+      font-size: .84rem;
+      font-weight: 650;
       text-decoration: none;
       white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color .15s ease, border-color .15s ease;
     }
-    .nav-inner a:hover { color: var(--blue); }
+    .nav-inner a:hover { color: var(--ink); }
+    .nav-inner a.active { color: var(--ink); border-color: var(--accent); }
 
-    main { padding: 38px 0 100px; }
+    /* ---------- Sections ---------- */
+    main { padding: 6px 0 100px; }
     section {
       display: grid;
       grid-template-columns: 160px minmax(0, 1fr);
       gap: 38px;
       padding: 48px 0;
-      scroll-margin-top: 60px;
+      scroll-margin-top: 64px;
     }
     section + section { border-top: 1px solid var(--line); }
     .section-title {
@@ -146,92 +282,95 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      color: var(--navy);
-      font-size: 1.45rem;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-weight: 560;
+      font-size: 1.5rem;
       line-height: 1.2;
     }
     .section-title::before {
-      width: 30px;
+      width: 26px;
       height: 4px;
       flex: 0 0 auto;
       content: "";
-      background: var(--blue);
+      background: var(--accent);
       border-radius: 99px;
     }
+    .content { max-width: 66ch; }
     .content > :first-child { margin-top: 0; }
     .content > :last-child { margin-bottom: 0; }
-    .lead { font-size: 1.08rem; }
-    strong { color: var(--navy); }
+    .lead { font-size: 1.06rem; }
+    strong { color: var(--ink); }
+
+    .research-block + .research-block { margin-top: 26px; }
+    .research-block h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 1.02rem;
+    }
+    .research-block p { margin: 0; }
 
     .research-focus {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 26px;
+      max-width: none;
     }
     .focus {
-      padding: 18px;
-      color: var(--navy);
-      background: #fafbfe;
+      padding: 16px 18px;
+      color: var(--ink);
+      background: var(--paper-soft);
       border: 1px solid var(--line);
       border-radius: 12px;
-      font-size: .9rem;
+      font-size: .88rem;
       font-weight: 700;
       line-height: 1.45;
     }
 
-    .list { display: grid; gap: 28px; }
+    .list { display: grid; gap: 28px; max-width: none; }
     .item { position: relative; padding-left: 22px; }
     .item::before {
       position: absolute;
-      top: .72em;
+      top: .6em;
       left: 0;
       width: 7px;
       height: 7px;
       content: "";
-      background: var(--blue);
+      background: var(--accent);
       border-radius: 50%;
     }
-    .item h3 {
-      margin: 0 0 7px;
-      color: var(--navy);
-      font-size: 1.06rem;
-      line-height: 1.5;
-    }
-    .item p { margin: 4px 0 0; color: var(--muted); font-size: .93rem; }
-    .meta { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-    .award {
-      display: inline-block;
-      margin-left: 8px;
-      padding: 3px 8px;
-      color: #183fc7;
-      background: var(--blue-soft);
+    .item-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 9px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
       border-radius: 999px;
-      font-size: .68rem;
-      font-weight: 800;
-      vertical-align: 2px;
+      font-size: .72rem;
+      font-weight: 700;
     }
+    .pill-venue { color: var(--accent); background: var(--accent-soft); }
+    .pill-type  { color: var(--muted); background: var(--paper-soft); border: 1px solid var(--line); }
+    .pill-award { color: var(--award); background: var(--award-soft); }
+    .item h3 { margin: 0 0 7px; color: var(--ink); font-size: 1.05rem; line-height: 1.5; }
+    .item p { margin: 4px 0 0; color: var(--muted); font-size: .93rem; }
 
     .project-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
+      max-width: none;
     }
-    .project {
-      padding: 22px;
-      background: #fafbfe;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-    }
-    .project h3 { margin: 0 0 8px; color: var(--navy); font-size: 1rem; }
+    .project { padding: 22px; background: var(--paper-soft); border: 1px solid var(--line); border-radius: 14px; }
+    .project h3 { margin: 0 0 8px; color: var(--ink); font-size: 1rem; }
     .project p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.65; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
     .tag { padding: 3px 8px; color: #495774; background: #eef1f7; border-radius: 6px; font-size: .68rem; font-weight: 700; }
 
-    .timeline { display: grid; gap: 0; }
+    .timeline { display: grid; gap: 0; max-width: none; }
     .timeline-row {
       display: grid;
-      grid-template-columns: 145px minmax(0, 1fr);
+      grid-template-columns: 150px minmax(0, 1fr);
       gap: 22px;
       padding: 17px 0;
       border-bottom: 1px solid var(--line);
@@ -239,10 +378,10 @@
     .timeline-row:first-child { padding-top: 0; }
     .timeline-row:last-child { padding-bottom: 0; border-bottom: 0; }
     .date { color: var(--muted); font-size: .8rem; font-weight: 650; }
-    .timeline-row h3 { margin: 0; color: var(--navy); font-size: .96rem; }
+    .timeline-row h3 { margin: 0; color: var(--ink); font-size: .96rem; }
     .timeline-row p { margin: 2px 0 0; color: var(--muted); font-size: .86rem; }
 
-    .skill-list { display: grid; gap: 15px; }
+    .skill-list { display: grid; gap: 15px; max-width: none; }
     .skill-row { display: grid; grid-template-columns: 155px 1fr; gap: 20px; }
     .skill-row strong { font-size: .88rem; }
     .skill-row span { color: var(--muted); font-size: .9rem; }
@@ -258,13 +397,11 @@
     @media (max-width: 760px) {
       body { font-size: 16px; }
       .page, .nav-inner { width: min(calc(100% - 32px), var(--max)); }
-      .profile { grid-template-columns: 116px 1fr; gap: 22px; padding: 40px 0 42px; align-items: start; }
-      .profile-photo { width: 116px; height: 116px; border-radius: 15px; }
-      .profile h1 { font-size: clamp(2.25rem, 11vw, 3.5rem); }
-      .role { margin: 10px 0 16px; font-size: .98rem; }
-      .affiliation { display: block; margin-top: 4px; font-size: .82rem; }
-      .profile-links { grid-column: 1 / -1; margin-top: 18px; gap: 10px 18px; }
-      .link-icon { width: 25px; height: 25px; }
+
+      .hero-content { grid-template-columns: 1fr; justify-items: start; gap: 26px; padding: 64px 0 56px; }
+      .portrait-float { width: 128px; height: 128px; }
+      .hero .role { max-width: none; }
+
       section { grid-template-columns: 1fr; gap: 25px; padding: 42px 0; }
       .research-focus, .project-grid { grid-template-columns: 1fr; }
       .timeline-row { grid-template-columns: 1fr; gap: 4px; }
@@ -273,29 +410,49 @@
     }
 
     @media (max-width: 430px) {
-      .profile { grid-template-columns: 92px 1fr; gap: 16px; }
-      .profile-photo { width: 92px; height: 92px; border-radius: 12px; }
-      .profile h1 { font-size: 2.15rem; }
-      .profile-links li { flex: 1 0 38%; }
+      .hero .profile-links li { flex: 1 0 40%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      .layer i, .portrait-float, .status-dot { animation: none !important; }
+      .layer, .portrait-wrap { transform: none !important; }
     }
   </style>
 </head>
 <body>
-  <header class="page profile" id="top">
-    <img class="profile-photo" src="my_photo.jpg" alt="Portrait of Hyeokmin Kwon" width="590" height="786">
-    <div>
-      <h1>Hyeokmin Kwon</h1>
-      <p class="role">Computer Science Researcher &amp; Software Engineer<br><span class="affiliation">Handong Global University</span></p>
-      <ul class="profile-links" aria-label="Contact and profile links">
-        <li><a href="mailto:hyeokkiyaa@gmail.com"><span class="link-icon">@</span>Email</a></li>
-        <li><a href="https://github.com/hyeokkiyaa" target="_blank" rel="noopener"><span class="link-icon">GH</span>GitHub</a></li>
-        <li><a href="https://hyeokkiyaa.github.io/HyeokminKwon_CV.pdf" target="_blank" rel="noopener"><span class="link-icon">CV</span>Curriculum Vitae</a></li>
-        <li><a href="#publications"><span class="link-icon">P</span>Publications</a></li>
-      </ul>
+  <a class="skip-link" href="#about">Skip to content</a>
+
+  <header class="hero" id="top">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="layer-field" id="layerField" aria-hidden="true">
+      <span class="layer layer--a" style="--depth:22"><i></i></span>
+      <span class="layer layer--b" style="--depth:14"><i></i></span>
+      <span class="layer layer--c" style="--depth:28"><i></i></span>
+      <span class="layer layer--d" style="--depth:10"><i></i></span>
+      <span class="layer layer--e" style="--depth:34"><i></i></span>
+    </div>
+
+    <div class="page hero-content">
+      <div class="portrait-wrap" id="portraitWrap" style="--depth:8">
+        <div class="portrait-float">
+          <img src="my_photo.jpg" alt="Portrait of Hyeokmin Kwon" width="590" height="786">
+        </div>
+      </div>
+      <div>
+        <h1>Hyeokmin Kwon</h1>
+        <p class="role">Undergraduate researcher working across AI interaction and software engineering.</p>
+        <p class="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Currently an intern researcher at the <strong>Ultimate&nbsp;Interface&nbsp;Lab, UNIST</strong>, studying AI interaction under Prof. Seongkook&nbsp;Heo.
+        </p>
+        <ul class="profile-links" aria-label="Contact and profile links">
+          <li><a href="mailto:hyeokkiyaa@gmail.com"><span class="link-icon">@</span>Email</a></li>
+          <li><a href="https://github.com/hyeokkiyaa" target="_blank" rel="noopener"><span class="link-icon">GH</span>GitHub</a></li>
+          <li><a href="https://hyeokkiyaa.github.io/HyeokminKwon_CV.pdf" target="_blank" rel="noopener"><span class="link-icon">CV</span>Curriculum Vitae</a></li>
+          <li><a href="#publications"><span class="link-icon">P</span>Publications</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -315,16 +472,25 @@
     <section id="about">
       <h2 class="section-title">About</h2>
       <div class="content">
-        <p class="lead">I am a Computer Science student and undergraduate researcher at <strong>Handong Global University</strong>. I build intelligent software systems that make complex engineering work more reliable.</p>
-        <p>My interests lie at the intersection of <strong>software engineering and artificial intelligence</strong>, particularly LLM-based program repair, code intelligence, developer agents, and dependable systems. I enjoy taking a problem from its research question to a working implementation — designing the architecture, building the feedback loop, and learning from where the system breaks.</p>
+        <p class="lead">I'm a Computer Science student at <strong>Handong Global University</strong>, working at the intersection of software engineering and human-computer interaction.</p>
+        <p>Most recently, I've been researching AI interaction as an undergraduate intern at the <strong>Ultimate Interface Lab, UNIST</strong>, advised by Prof. Seongkook Heo — looking at how people interact with AI agents, with a particular interest in accessibility.</p>
+        <p>Before that, my research centered on intelligent software engineering: LLM-based program repair, code graphs, and developer agents. I like taking a problem from its research question to a working system — designing the architecture, building the feedback loop, and learning from where it breaks.</p>
       </div>
     </section>
 
     <section id="research">
       <h2 class="section-title">Research</h2>
       <div class="content">
-        <p>As an undergraduate researcher in the <strong>Intelligent Software Engineering Lab</strong>, advised by Prof. Jae Chang Nam, I studied automated software engineering, code graph analysis, and AI/ML environment automation. I also contributed to static-analysis-based malware detection research in collaboration with UMV.</p>
+        <div class="research-block">
+          <h3>AI Interaction — Ultimate Interface Lab, UNIST</h3>
+          <p>As an undergraduate research intern advised by Prof. Seongkook Heo, I study how people interact with AI systems, with a focus on accessibility — exploring interaction techniques and interfaces that make AI agents easier and more equitable to use.</p>
+        </div>
+        <div class="research-block">
+          <h3>Software Engineering — Intelligent Software Engineering Lab, HGU</h3>
+          <p>As an undergraduate researcher in the Intelligent Software Engineering Lab, advised by Prof. Jae Chang Nam, I studied automated software engineering, code graph analysis, and AI/ML environment automation. I also contributed to static-analysis-based malware detection research in collaboration with UMV.</p>
+        </div>
         <div class="research-focus">
+          <div class="focus">AI Interaction &amp; Accessibility</div>
           <div class="focus">LLM-based Automated Program Repair</div>
           <div class="focus">Code Graphs &amp; Program Analysis</div>
           <div class="focus">AI Agents for Software Engineering</div>
@@ -336,14 +502,21 @@
       <h2 class="section-title">Publications</h2>
       <div class="content list">
         <article class="item">
-          <span class="meta">KCSE 2026 · Full Paper</span>
-          <h3>A Survey on Leveraging Code Graphs for LLM-based Automated Program Repair <span class="award">Best Paper Award</span></h3>
-          <p>Shinyeob Kang, Jikwang Lee, <strong>Hyeokmin Kwon</strong>, Jaechang Nam · KCSE 2026 Proceedings, p. 170</p>
+          <div class="item-tags">
+            <span class="pill pill-venue">KCSE 2026</span>
+            <span class="pill pill-type">Full Paper</span>
+            <span class="pill pill-award">Best Paper Award</span>
+          </div>
+          <h3>A Survey on Leveraging Code Graphs for LLM-based Automated Program Repair</h3>
+          <p>Shinyeob Kang, Jikwang Lee, <strong>Hyeokmin Kwon</strong>, Jaechang Nam. KCSE 2026 Proceedings, p. 170.</p>
         </article>
         <article class="item">
-          <span class="meta">KCSE 2026 · Short Paper</span>
+          <div class="item-tags">
+            <span class="pill pill-venue">KCSE 2026</span>
+            <span class="pill pill-type">Short Paper</span>
+          </div>
           <h3>EnvAgent: Automated Conda Environment Building System for AI/ML Projects</h3>
-          <p><strong>Hyeokmin Kwon</strong>, Jikwang Lee, Shinyeob Kang, Yongbean Chung, Jaechang Nam · KCSE 2026 Proceedings, p. 198</p>
+          <p><strong>Hyeokmin Kwon</strong>, Jikwang Lee, Shinyeob Kang, Yongbean Chung, Jaechang Nam. KCSE 2026 Proceedings, p. 198.</p>
         </article>
       </div>
     </section>
@@ -377,6 +550,7 @@
     <section id="experience">
       <h2 class="section-title">Experience</h2>
       <div class="content timeline">
+        <div class="timeline-row"><span class="date">Aug. 2026 — Present</span><div><h3>Ultimate Interface Lab, UNIST</h3><p>Undergraduate Research Intern · Advised by Prof. Seongkook Heo · AI Interaction &amp; Accessibility</p></div></div>
         <div class="timeline-row"><span class="date">Jun. 2026 — Present</span><div><h3>Seoul National University AI Big Data Fintech Program</h3><p>Trainee, 13th Cohort</p></div></div>
         <div class="timeline-row"><span class="date">Mar. — Jun. 2026</span><div><h3>Malware Detection Modeling Research</h3><p>Research Assistant · Collaboration with UMV</p></div></div>
         <div class="timeline-row"><span class="date">Dec. 2024 — Jun. 2026</span><div><h3>Intelligent Software Engineering Lab</h3><p>Undergraduate Researcher · Handong Global University</p></div></div>
@@ -413,5 +587,66 @@
       <span>Pohang, Republic of Korea</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hero = document.querySelector('.hero');
+      var targets = Array.prototype.slice.call(document.querySelectorAll('.layer, .portrait-wrap'));
+
+      if (hero && targets.length && !prefersReduced) {
+        var targetX = 0, targetY = 0, curX = 0, curY = 0, running = false;
+
+        function onMove(e) {
+          var rect = hero.getBoundingClientRect();
+          var x = ('touches' in e && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+          var y = ('touches' in e && e.touches[0]) ? e.touches[0].clientY : e.clientY;
+          targetX = ((x - rect.left) / rect.width - 0.5) * 2;
+          targetY = ((y - rect.top) / rect.height - 0.5) * 2;
+          start();
+        }
+        function onLeave() { targetX = 0; targetY = 0; start(); }
+
+        function tick() {
+          curX += (targetX - curX) * 0.07;
+          curY += (targetY - curY) * 0.07;
+          targets.forEach(function (el) {
+            var depth = parseFloat(el.style.getPropertyValue('--depth')) || 10;
+            el.style.transform = 'translate3d(' + (curX * depth).toFixed(2) + 'px, ' + (curY * depth).toFixed(2) + 'px, 0)';
+          });
+          if (Math.abs(curX - targetX) > 0.001 || Math.abs(curY - targetY) > 0.001) {
+            requestAnimationFrame(tick);
+          } else {
+            running = false;
+          }
+        }
+        function start() {
+          if (!running) { running = true; requestAnimationFrame(tick); }
+        }
+
+        hero.addEventListener('pointermove', onMove, { passive: true });
+        hero.addEventListener('pointerleave', onLeave, { passive: true });
+        hero.addEventListener('touchmove', onMove, { passive: true });
+      }
+
+      // Sticky-nav active section indicator
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-inner a'));
+      var linkByHash = {};
+      navLinks.forEach(function (a) { linkByHash[a.getAttribute('href').slice(1)] = a; });
+      var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+
+      if ('IntersectionObserver' in window && sections.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var link = linkByHash[entry.target.id];
+            if (!link || !entry.isIntersecting) return;
+            navLinks.forEach(function (l) { l.classList.remove('active'); });
+            link.classList.add('active');
+          });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+        sections.forEach(function (s) { observer.observe(s); });
+      }
+    })();
+  </script>
 </body>
 </html>
